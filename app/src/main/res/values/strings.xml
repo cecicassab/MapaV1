@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MapaV1</string>
+    <string name="title_activity_mapa">Mapa</string>
+    <string name="BotaoCid">Juiz de fora</string>
+    <string name="BotaoVic">Viçosa</string>
+    <string name="BotaoDep">DPI/UFV</string>
+    <string name="loc">localização</string>
+</resources>

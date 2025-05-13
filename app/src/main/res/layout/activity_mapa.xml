@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mapa">
+
+
+    <fragment
+        android:id="@+id/mapa"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btdpi"
+        />
+
+
+    <Button
+        android:id="@+id/btdpi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BotaoDep"
+        android:tag="1"
+        android:onClick="foca_mapa"
+        />
+    <Button
+        android:id="@+id/btjf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BotaoCid"
+        android:layout_toEndOf="@+id/btdpi"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:tag="2"
+        android:layout_centerHorizontal="true"
+        android:onClick="foca_mapa"
+        />
+    <Button
+        android:id="@+id/btvic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BotaoVic"
+        android:layout_toEndOf="@id/btjf"
+        android:tag="3"
+        android:layout_alignEnd="@id/mapa"
+        android:onClick="foca_mapa"
+        />
+    <Button
+        android:id="@+id/loc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btjf"
+        android:layout_centerHorizontal="true"
+        android:text="@string/loc"
+        android:layout_marginTop="630dp"
+        android:onClick="marca_loc"
+        />
+
+
+
+
+</RelativeLayout>
