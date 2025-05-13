@@ -10,8 +10,8 @@ public class MyApp extends Application {
         MyApp.context = getApplicationContext();
     }
     public static Context getAppContext() {
-//método usado para recuperar o context do app
-//de qualquer parte do programa
+        //método usado para recuperar o context do app
+        //de qualquer parte do programa
         return MyApp.context;
     }
 }

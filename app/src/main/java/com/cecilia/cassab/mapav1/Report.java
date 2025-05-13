@@ -31,8 +31,10 @@ public class Report extends ListActivity {
         // verifica se o cursor tem dados antes de mover
         if (cursor.moveToFirst()) {
             do {
+                //busca no bd por todos os logs
                 String msg = cursor.getString(cursor.getColumnIndexOrThrow("msg"));
                 String timestamp = cursor.getString(cursor.getColumnIndexOrThrow("timestamp"));
+                //armazena na string menu as msgs e seus respectivos timestamps
                 menu.add(msg + " - " + timestamp);
             } while (cursor.moveToNext());
         }
@@ -42,22 +44,21 @@ public class Report extends ListActivity {
         ArrayAdapter<String> arrayadapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menu);
         setListAdapter(arrayadapter);
 
-
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String aux = l.getItemAtPosition(position).toString();
         String[] text = aux.split(" ");
-        String msg = text[0];
-        String timestamp = text[2]+" "+text[3];
-        Log.i("relatorio",msg+" "+timestamp);
+        String msg = text[0]; //pega a msg para realizar o buscar
+        Log.i("relatorio",msg);
 
-        String where = "L.id=Ls.id and Ls.msg='" + msg + "' and Ls.timestamp='" + timestamp + "'";
+        //faz o join buscando lugares em que msg=msg
+        String where = "L.id=Ls.id and Ls.msg='" + msg + "'";
         Cursor cursor = BancoDadosSingleton.getInstance().buscar("Location L, Logs Ls", new String[]{"L.latitude", "L.longitude"},where, "");
         cursor.moveToFirst();
         do {
-            //percorre o cursor para pegar os dados de latlong do ponto e os salva no objeto
+            //guarda os valores de latitude e longitude na string aux
             double latitude = cursor.getDouble(cursor.getColumnIndexOrThrow("latitude"));
             double longitude = cursor.getDouble(cursor.getColumnIndexOrThrow("longitude"));
 
@@ -66,6 +67,8 @@ public class Report extends ListActivity {
 
         } while (cursor.moveToNext());
         cursor.close();
+
+        //faz o toast das informações de latitude e longitude
         Toast.makeText(this, aux, Toast.LENGTH_SHORT).show();
     }
 }
